@@ -19,7 +19,7 @@ const Paciente = db.define(
       type: DataTypes.INTEGER
     }
   },
-  { tableName: 'pacientes' }
+  { tableName: 'pacientes', timestamps: false }
 )
 
 module.exports = Paciente

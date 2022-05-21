@@ -6,8 +6,8 @@ routes.get('/', (req, res) => {
   res.send('Funcionando')
 })
 
-module.exports = routes
-
 //Pacientes
 routes.get('/pacientes', pacienteController.index)
 routes.post('/pacientes/cadastrar', pacienteController.store)
+
+module.exports = routes
