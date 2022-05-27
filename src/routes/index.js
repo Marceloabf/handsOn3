@@ -13,26 +13,41 @@ const authValidation = require('../validations/auth/login')
 
 module.exports = routes
 
-//Pacientes
-routes.get('/paciente', auth, pacientController.index);
-routes.get('/paciente/:id', auth, pacientController.show);
-routes.post('/paciente', auth, pacienteValidation, pacientController.store);
-routes.put('/paciente/:id', auth, pacienteValidation, pacientController.update);
-routes.delete('/paciente/:id', auth, pacientController.destroy);
+//Paciente
+routes.get('/paciente', auth, pacientController.index)
+routes.get('/paciente/:id', auth, pacientController.show)
+routes.post('/paciente', auth, pacienteValidation, pacientController.store)
+routes.put('/paciente/:id', auth, pacienteValidation, pacientController.update)
+routes.delete('/paciente/:id', auth, pacientController.destroy)
 
-//Psicologos
-routes.get('/psicologo',auth, psicologoController.index); 
-routes.get('/psicologo/:id',auth, psicologoController.show);
-routes.post('/psicologo', auth, psicologoValidation,psicologoController.store);
-routes.put('/psicologo/:id', auth, psicologoValidation, psicologoController.update);
-routes.delete('/psicologo/:id', auth, psicologoController.destroy);
+//Psicologo
+routes.get('/psicologo', psicologoController.index)
+routes.get('/psicologo/:id', auth, psicologoController.show)
+routes.post('/psicologo', psicologoValidation, psicologoController.store)
+routes.put(
+  '/psicologo/:id',
+  auth,
+  psicologoValidation,
+  psicologoController.update
+)
+routes.delete('/psicologo/:id', auth, psicologoController.destroy)
 
 //Atendimento
-routes.get('/atendimento', appointmentController.index);
-routes.get('/atendimento/:id', appointmentController.show);
-routes.post('/atendimento', auth, atendimentoValidation, appointmentController.store);
-routes.put('/atendimento/:id', auth, atendimentoValidation, appointmentController.update);
-routes.delete('/atendimento/:id', auth, appointmentController.destroy);
+routes.get('/atendimento', auth, appointmentController.index)
+routes.get('/atendimento/:id', appointmentController.show)
+routes.post(
+  '/atendimento',
+  auth,
+  atendimentoValidation,
+  appointmentController.store
+)
+routes.put(
+  '/atendimento/:id',
+  auth,
+  atendimentoValidation,
+  appointmentController.update
+)
+routes.delete('/atendimento/:id', auth, appointmentController.destroy)
 
 //Login
-routes.post('/login',authValidation, authController.login)
+routes.post('/login', authValidation, authController.login)
