@@ -1,0 +1,29 @@
+DROP DATABASE la_vie;
+
+CREATE DATABASE la_vie;
+USE la_vie;
+
+CREATE TABLE pacientes (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+nome VARCHAR(150) NOT NULL,
+email VARCHAR(150) NOT NULL,
+idade DATE
+);
+
+CREATE TABLE psicologos (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+nome VARCHAR(150) NOT NULL,
+email VARCHAR(150) NOT NULL,
+senha VARCHAR(255) NOT NULL,
+descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE atendimentos (
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+paciente_id INT NOT NULL,
+psicologo_id INT NOT NULL,
+data_atendimento DATE,
+observacao VARCHAR(255),
+CONSTRAINT FK_paciente_id FOREIGN KEY (paciente_id) REFERENCES pacientes(id) ON DELETE CASCADE,
+CONSTRAINT FK_psicologo_id FOREIGN KEY (psicologo_id) REFERENCES psicologos(id) ON DELETE CASCADE
+);

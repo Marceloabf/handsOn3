@@ -1,12 +1,12 @@
 const db = require('../database')
 const { DataTypes } = require('sequelize')
-const Paciente = require('./Paciente')
+const Paciente = require('./index.js')
 const Psicologo = require('./Psicologo')
 
 const Atendimento = db.define(
   'Atendimento',
   {
-    codigo: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -15,18 +15,24 @@ const Atendimento = db.define(
       type: DataTypes.INTEGER,
       References: {
         model: Paciente,
-        key: 'codigo'
+        key: 'id'
       }
     },
-    medico_id: {
+    psicologo_id: {
       type: DataTypes.INTEGER,
       References: {
         model: Psicologo,
-        key: 'codigo'
+        key: 'id'
       }
+    },
+    observacao:{
+      type: DataTypes.STRING
+    },
+    data_atendimento: {
+      type: DataTypes.DATE
     }
   },
-  { tableName: 'atendimento' }
+  { tableName: 'atendimentos', timestamps:false }
 )
 
 module.exports = Atendimento

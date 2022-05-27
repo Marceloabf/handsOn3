@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize')
 const Paciente = db.define(
   'Paciente',
   {
-    codigo: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -16,10 +16,10 @@ const Paciente = db.define(
       type: DataTypes.STRING
     },
     idade: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DATE
     }
   },
-  { tableName: 'pacientes', timestamps: false }
+  { tableName: 'pacientes', timestamps:false }
 )
 
 module.exports = Paciente

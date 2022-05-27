@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize')
 const Psicologo = db.define(
   'Psicologo',
   {
-    codigo: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -22,7 +22,7 @@ const Psicologo = db.define(
       type: DataTypes.STRING
     }
   },
-  { tableName: 'psicologo' }
+  { tableName: 'psicologos', timestamps:false }
 )
 
 module.exports = Psicologo
